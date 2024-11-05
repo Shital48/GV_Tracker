@@ -1,0 +1,54 @@
+# Node modules and npm files
+node_modules/
+package-lock.json
+
+# Build files
+dist/
+build/
+
+# SAP Web IDE and SAP Business Application Studio settings
+.webide/
+.project.json
+.workspace/
+.che/
+.env
+
+# VS Code settings
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Test coverage and reporting (if you use tools like Istanbul for JS coverage)
+coverage/
+.nyc_output/
+
+# SAP-specific configuration files
+*.DS_Store
+neo-app.json  # Only include if this file is generated and not manually configured
+*.webapp/localService/metadata.xml  # If you’re using mock services
+webapp/test/
+
+# IDE-specific files and cache
+.idea/
+*.swp
+*.swo
+
+# Personal Git credentials (to prevent committing sensitive info)
+.git-credentials
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux file
+.Trash-*
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# Minified or transpiled JS/CSS (if gen
