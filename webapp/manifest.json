@@ -1,0 +1,190 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "gvtracker",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.15.1",
+      "toolsId": "32e12dd3-7b4d-4968-ad06-a4411aa48eb2"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.129.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "gvtracker.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "gvtracker.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteMain",
+          "pattern": "",
+          "target": [
+            "TargetMain"
+          ]
+        },
+        {
+          "name": "Gvr_display",
+          "pattern": "Gvr_display",
+          "target": [
+            "Gvr_display1"
+          ]
+        },
+        {
+          "name": "Gvr_issue",
+          "pattern": "Gvr_issue",
+          "target": [
+            "Gvr_issue1"
+          ]
+        },
+        {
+          "name": "Cust_profile",
+          "pattern": "Cust_profile",
+          "target": [
+            "Cust_profile1"
+          ]
+        },
+        {
+          "name": "Bill_details",
+          "pattern": "Bill_details",
+          "target": [
+            "Bill_details1"
+          ]
+        },
+        {
+          "name": "Billdetails_display",
+          "pattern": "Billdetails_display",
+          "target": [
+            "Billdetails_display1"
+          ]
+        },
+        {
+          "name": "Main",
+          "pattern": "Main",
+          "target": [
+            "Main1"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetMain": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Main",
+          "viewName": "Main",
+          "viewLevel": 1
+        },
+        "Gvr_display1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Gvr_display",
+          "viewName": "Gvr_display",
+          "viewLevel": 2
+        },
+        "Gvr_issue1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Gvr_issue",
+          "viewName": "Gvr_issue",
+          "viewLevel": 3
+        },
+        "Cust_profile1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Cust_profile",
+          "viewName": "Cust_profile",
+          "viewLevel": 3
+        },
+        "Bill_details1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Bill_details",
+          "viewName": "Bill_details",
+          "viewLevel": 4
+        },
+        "Billdetails_display1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Billdetails_display",
+          "viewName": "Billdetails_display",
+          "viewLevel": 5
+        },
+        "Main1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Main",
+          "viewName": "Main",
+          "viewLevel": 5
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "gvtracker.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

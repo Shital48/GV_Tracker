@@ -1,0 +1,175 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout.form" xmlns:core="sap.ui.core" controllerName="gvtracker.controller.GvrIssue" displayBlock="true">
+<Button xmlns="sap.m" text="BACK" id="button7" press="onBackPress"/>
+<Page id="issuePage" title="Gift Voucher Tracker  -  Gift Issue to Customer Activty - CREATE Screen">
+    <headerContent> 
+        <Button xmlns="sap.m" text="User Profile" id="button0111" />
+    </headerContent>
+ 
+     <form:Form editable="true" id="form11" width="100%">
+            <form:layout>
+               <form:ResponsiveGridLayout columnsXL="3" columnsL="3" columnsM="3"/>
+            </form:layout>
+            <form:formContainers>
+
+                <form:FormContainer id="container10">
+                    <form:formElements>
+                        <form:FormElement label="Shopping Mall" id="ShoppingMall11">
+                            <Input width="100%" id="ShoppingMall12" editable="false" value="{/shoppingMall}" /> 
+                        </form:FormElement>
+
+                        <form:FormElement label="Customer Type" id="CustomerType11">
+                        <form:fields>
+                            <Select xmlns="sap.m" id="select0">
+                                <items>
+                                    <core:Item xmlns:core="sap.ui.core" key="item-key-1" text="Item Text One" id="item1"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="item-key-2" text="Item Text Two" id="item2"/>
+                                    </items>
+                                
+                            </Select>
+                        </form:fields>
+                        </form:FormElement>
+
+                        <!-- F4 Value Help for Customer Mobile -->
+                <form:FormElement label="Customer Mobile" id="CustomerMobile11">
+                    <Input id="CustomerMobile12" width="100%" showValueHelp="true" valueHelpRequest="onCustomerMobileValueHelp"/>
+                </form:FormElement>
+
+                <!-- F4 Value Help for Campaign -->
+                <form:FormElement label="Campaign" id="Campaign1">
+                    <Input id="Campaign12" width="100%" showValueHelp="true" valueHelpRequest="onCampaignValueHelp"/>
+                </form:FormElement>
+
+                        <form:FormElement label="Total Gift Items Value" id="TotalGift11">
+                            <Input width="100%" id="TotalGift12" editable="false" value="{/selectedTotalValue}"/>
+                        </form:FormElement>
+                    </form:formElements>
+                </form:FormContainer>
+
+                <form:FormContainer id="container12">
+                    <form:formElements>
+                        <form:FormElement label="CSE User Name">
+                            <Input id="Field11" width="100%"/>
+                        </form:FormElement>
+
+                        <form:FormElement label="Employee ID / Name">
+                            <Input id="Field12" width="100%"/>
+                        </form:FormElement>
+                          
+                    </form:formElements>
+                </form:FormContainer>
+
+                <form:FormContainer id="container13">
+                    <form:formElements>
+                        
+                        <form:FormElement label="GVR Date">
+                            <Input id="GVRDate1" width="100%" editable="false" value="{viewModel>/currentDate}" />
+                        </form:FormElement>
+
+
+                        <form:FormElement>
+                        <form:fields> 
+                            <Button id="saveButton" text="Add Customer Profile" press="onNavigate1" width="65%" class="buttonSize"/>
+                        </form:fields>  
+                        </form:FormElement> 
+
+                        <form:FormElement>
+                        <form:fields> 
+                            <Button id="saveButton1" text="Add Customer Bill Info" press="onNavigate2" width="65%" class="buttonSize"/>
+                        </form:fields>  
+                        </form:FormElement>
+
+                        
+                        <form:FormElement label="Customer OTP">
+                            <Input id="otp" width="100%"/>
+                            <form:fields>
+                            <Button id="otpSend" text="Send OTP" press="onSendOtp"/>
+                            </form:fields> 
+                        </form:FormElement>
+
+                        <form:FormElement> 
+                            <form:fields>
+                            <Button id="otpVerify" text="Verify OTP" press="onVerifyOtp" width="50%" class="buttonSize"/> 
+                            </form:fields>
+                        </form:FormElement> 
+
+
+
+                    </form:formElements> 
+                </form:FormContainer> 
+            </form:formContainers>
+        </form:Form>
+     
+        
+
+            <Panel id="panel1" width="100%">
+                <content>
+                    <HBox>
+                        <items>
+                            <Label text="Comments" width="90px" id="label90" class="commentLabelSize"/>
+                            <Input xmlns="sap.m" value="" width="1370px" id="cmt1" class="commentInput"/>
+                        </items>
+                    </HBox>
+                </content>
+            </Panel>
+ 
+     <!-- <Title text="Gift Item Details for Customer Issue" level="H2"/> -->
+        <Table items="{/data}" id="idProductsTable" >
+        <!-- Define the headerToolbar within the Table control -->
+        <headerToolbar>
+            <Toolbar>
+                <Title text="Gift Item Details for Customer Issue"/>
+            </Toolbar>
+        </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="Sel."/> 
+                </Column>
+                <Column>
+                    <Text text="Material Code"/> 
+                </Column>
+                <Column>
+                    <Text text="Material Name"/> 
+                </Column>
+                <Column>
+                    <Text text="Stock Qty"/> 
+                </Column>
+                <Column>
+                    <Text text="Value"/> 
+                </Column>
+                <Column>
+                    <Text text="Issue Qty"/> 
+                </Column>
+                <Column>
+                    <Text text="GV Coupon SL. No"/> 
+                </Column>
+                <Column>
+                    <Text text="Brand"/> 
+                </Column>
+                <Column>
+                    <Text text="Expiry Date"/> 
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <CheckBox selected="{Sel}" select=".onSelectionChange"/>
+                        <Text text="{MaterialCode}"/>
+                        <Text text="{MaterialName}"/>
+                        <Text text="{StockQty}"/>
+                        <Text text="{Value}"/>
+                        <Input value="{IssueQty}" editable="{IsGiftArticle}" change=".onIssueQtyChange"/>
+                        <Text text="{GVCouponSLNo}"/>
+                        <Text text="{Brand}"/>
+                        <Text text="{ExpiryDate}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <HBox justifyContent="End" alignItems="Center">
+            <Button text="CANCEL" class="buttonSpace"/>
+            <Button text="SUBMIT" class="buttonSpace"/> 
+        </HBox> 
+
+    </Page>
+</mvc:View>

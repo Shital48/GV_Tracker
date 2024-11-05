@@ -1,0 +1,124 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout" controllerName="gvtracker.controller.Gvr" displayBlock="true">
+    <Button xmlns="sap.m" text="BACK" id="displayBack" press="onBackPress"/>
+    <Page id="displayPage" title="Gift Voucher Tracker  -  Gift Issue to Customer Activty - DISPLAY Screen"> 
+        <content>
+     
+         
+        <form:Form editable="true" id="form01" width="100%">
+            <form:layout>
+               <form:ResponsiveGridLayout columnsXL="3" columnsL="3" columnsM="3"/>
+            </form:layout>
+            <form:formContainers>
+
+                <form:FormContainer id="container0">
+                    <form:formElements>
+                        <form:FormElement label="GVR Number" id="GVRNumber" >
+                            <Input width="100%" id="GVRNumber1" editable="false"/>
+                        </form:FormElement>
+
+                        <form:FormElement label="Shopping Mall" id="ShoppingMall" >
+                            <Input width="100%" id="ShoppingMall1" editable="false"/>
+                        </form:FormElement>
+
+                        <form:FormElement label="Customer Mobile" id="CustomerMobile" >
+                            <Input width="100%" id="CustomerMobile1" editable="false"/>
+                        </form:FormElement>
+
+                        <form:FormElement label="Total Gift Items Value" id="TotalGift">
+                            <Input width="100%" id="TotalGift1" editable="false"/>
+                        </form:FormElement>
+                    </form:formElements>
+                </form:FormContainer>
+
+                <form:FormContainer id="container2">
+                    <form:formElements>
+                        <form:FormElement label="CSE User Name" >
+                            <Input id="Field1" width="100%" editable="false"/>
+                        </form:FormElement>
+
+                        <form:FormElement label="Customer Type" >
+                            <Input id="Field2" width="100%" editable="false"/>
+                        </form:FormElement>
+                          
+                    </form:formElements>
+                </form:FormContainer>
+
+                <form:FormContainer id="container3">
+                    <form:formElements>
+                        <form:FormElement label="GVR Date">
+                            <Input id="Fiel1d1" width="100%" editable="false"/>
+                        </form:FormElement>
+
+                        <form:FormElement label="Campaign">
+                            <Input id="Fie1l2d2" width="100%" editable="false"/>
+                        </form:FormElement>
+                         
+                    </form:formElements>
+                </form:FormContainer>
+ 
+ 
+            </form:formContainers>
+        </form:Form>
+     
+         <Panel id="panel2" width="100%">
+                <content>
+                    <HBox>
+                        <items>
+                            <Label text="Comments" width="90px" id="label0" class="commentLabelSize"/>
+                            <Input xmlns="sap.m" value="Value" width="1370px" id="cmt" class="commentInput" editable="false"/>
+                        </items>
+                    </HBox>
+                </content>
+            </Panel>
+
+     
+
+     <Title text="Gift Item Details for Customer Issue" level="H2"/>
+        <Table items="{path: '/giftItems'}" visibleRowCount="5" headerToolbar="headerToolbar">
+            <columns>
+                <Column>
+                    <Text text="Sel."/>
+                </Column>
+                <Column>
+                    <Text text="Material Code"/>
+                </Column>
+                <Column>
+                    <Text text="Material Name"/>
+                </Column> 
+                <Column>
+                    <Text text="Value"/>
+                </Column>
+                <Column>
+                    <Text text="Issue Qty"/>
+                </Column>
+                <Column>
+                    <Text text="GV Coupon SL. No"/>
+                </Column>
+                <Column>
+                    <Text text="Brand"/>
+                </Column>
+                <Column>
+                    <Text text="Expiry Date"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <CheckBox selected="{selected}"/>
+                        <Text text="{materialCode}"/>
+                        <Text text="{materialName}"/>
+                        <Text text="{stockQty}"/>
+                        <Text text="{value}"/>
+                        <Input value="{issueQty}"/>
+                        <Text text="{gvCouponSlNo}"/>
+                        <Text text="{brand}"/>
+                        <Text text="{expiryDate}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        
+        </content>
+    </Page>
+</mvc:View>

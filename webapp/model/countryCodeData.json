@@ -1,0 +1,44 @@
+{
+    "CountryCodes": [
+        {
+            "LAND1": "US",
+            "TELEFTO": "+1"
+        },
+        {
+            "LAND1": "CA",
+            "TELEFTO": "+1"
+        },
+        {
+            "LAND1": "IN",
+            "TELEFTO": "+91"
+        },
+        {
+            "LAND1": "DE",
+            "TELEFTO": "+49"
+        },
+        {
+            "LAND1": "FR",
+            "TELEFTO": "+33"
+        },
+        {
+            "LAND1": "GB",
+            "TELEFTO": "+44"
+        },
+        {
+            "LAND1": "AU",
+            "TELEFTO": "+61"
+        },
+        {
+            "LAND1": "CN",
+            "TELEFTO": "+86"
+        },
+        {
+            "LAND1": "JP",
+            "TELEFTO": "+81"
+        },
+        {
+            "LAND1": "BR",
+            "TELEFTO": "+55"
+        }
+    ]
+}

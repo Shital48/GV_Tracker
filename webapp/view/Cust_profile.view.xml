@@ -1,0 +1,151 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:flex="sap.m" controllerName="gvtracker.controller.CustomerProfile" displayBlock="true">
+    <Page id="cutomerProfilePage" title="Gift Voucher Tracker - Mall Customer Profile"> 
+        <content>
+         
+            <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form0" class="myForm" labelMinWidth="200">
+                <sap.ui.layout.form:content>
+
+                <!-- <VBox justifyContent="Center" alignItems="Center" height="100%">
+                
+
+                    <HBox>
+                    <Label text="Cust. Mobile Number" id="label30" class="CustProfileLabel"/>
+                    <Input width="120%" id="input10" class="CustProfileInput"/>
+                    </HBox>
+
+                    <HBox>
+                    <Label text="Mobile Country Code" id="label31" class="CustProfileLabel"/>
+                    <Input width="120%" id="input11" class="CustProfileInput"/>
+                    </HBox>
+
+                    <HBox>
+                    <Label text="Customer Title" id="label01" class="CustProfileLabel1"/> 
+                    <Select xmlns="sap.m" id="select40" class="CustProfileInput1" width="210px">
+                        <items>
+                            <core:Item xmlns:core="sap.ui.core" key="item-key-1" text="Item Text One" id="item0"/>
+                            <core:Item xmlns:core="sap.ui.core" key="item-key-2" text="Item Text Two" id="item41"/>
+                        </items> 
+                    </Select> 
+                    </HBox>
+
+                    <HBox>
+                    <Label text="Customer Name" id="label02" class="CustProfileLabel"/>
+                    <Input width="120%" id="input02" class="CustProfileInput"/>
+                    </HBox>
+
+                    <HBox>
+                    <Label text="Customer Email" id="label03" class="CustProfileLabel"/>
+                    <Input width="120%" id="input03" class="CustProfileInput"/> 
+                    </HBox>
+
+                    
+                    <HBox>
+                        <Button xmlns="sap.m" text="CANCEL" id="button1" class="spaceBtn1"/>
+                        <Button xmlns="sap.m" text="ADD CUSTOMER" id="buttonn2" class="spaceBtn2"/>
+                    </HBox>
+                
+                
+                </VBox> 
+                 -->
+
+
+
+                 <VBox justifyContent="Center" alignItems="Center" height="21rem">    
+                
+                <HBox width="35%" justifyContent="SpaceBetween">
+                 <FlexBox direction="Column" justifyContent="SpaceAround">
+                    <Label text="Cust. Mobile Number" id="label30" class="CustProfileLabel"/>
+                    <Label text="Mobile Country Code" id="label31" class="CustProfileLabel"/>
+                    <Label text="Customer Title" id="label01" class="CustProfileLabel1"/> 
+                    <Label text="Customer Name" id="label02" class="CustProfileLabel"/>
+                    <Label text="Customer Email" id="label04" class="CustProfileLabel"/>
+                
+                
+                </FlexBox>
+
+                <FlexBox direction="Column">
+                    <Input id="CustNo" class="CustProfileInput"/>
+                    
+                    <Input id="CountryCode" class="CustProfileInput"  type="Number" required="true" placeholder="Enter Country Code" showValueHelp="true" valueHelpRequest="onCountryCodeValueHelp"/>
+                    <Select xmlns="sap.m" id="CustTitle" class="CustProfileInput1" width="18rem">
+                        <items>
+                            <core:Item xmlns:core="sap.ui.core" key="item-key-1" text="Item Text One" id="item0"/>
+                            <core:Item xmlns:core="sap.ui.core" key="item-key-2" text="Item Text Two" id="item41"/>
+                        </items> 
+                    </Select> 
+                    <Input id="CustName" class="CustProfileInput"/> 
+                    <Input id="CustEmail" class="CustProfileInput"/>
+                
+                </FlexBox>
+                
+                
+                </HBox>
+                    
+                    <HBox>
+                        <Button xmlns="sap.m" text="CANCEL" id="button1" class="spaceBtn1" press="onCancelPress"/>
+                        <Button xmlns="sap.m" text="ADD CUSTOMER" id="buttonn2" class="spaceBtn2"/>
+                    </HBox>
+                
+                
+                </VBox> 
+                
+                  </sap.ui.layout.form:content>
+            </sap.ui.layout.form:SimpleForm>
+            
+<!--    
+    <flex:FlexBox
+        justifyContent="Center"
+        alignItems="Center"
+        width="100%"
+        height="100%"
+       >
+
+       <form:Form editable="true" id="form111" width="100%">
+            <form:layout>
+               <form:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="5" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0"/>
+            </form:layout>
+            <form:formContainers>
+
+                <form:FormContainer id="container110">
+                    <form:formElements> 
+                        <form:FormElement label="Cust. Mobile Number" id="Number1">
+                            <Input width="100%" id="Number" editable="false" value="{/shoppingMall}" /> 
+                        </form:FormElement>
+
+                        <form:FormElement label="Mobile Country Code" id="Code1">
+                            <Input width="100%" id="Code" editable="false" value="{/shoppingMall}" /> 
+                        </form:FormElement>
+
+                        <form:FormElement label="Customer Title" id="aCustomerType11">
+                        <form:fields>
+                            <Select xmlns="sap.m" id="aselect0">
+                                <items>
+                                    <core:Item xmlns:core="sap.ui.core" key="item-key-1" text="Item Text One" id="aitem1"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="item-key-2" text="Item Text Two" id="aitem2"/>
+                                    </items> 
+                            </Select>
+                        </form:fields>
+                        </form:FormElement>
+
+                        <form:FormElement label="Customer Name" id="Name1">
+                            <Input width="100%" id="Name" editable="false" value="{/shoppingMall}" /> 
+                        </form:FormElement>
+
+                        <form:FormElement label="Customer Email" id="Email1">
+                            <Input width="100%" id="Email" editable="false" value="{/shoppingMall}" /> 
+                        </form:FormElement>
+
+                         
+                    </form:formElements>
+                </form:FormContainer>
+
+                 
+  </form:formContainers>
+        </form:Form> 
+         </flex:FlexBox> -->
+        </content>
+    <headerContent>
+        <Button xmlns="sap.m" text="CLOSE" id="button0"/>
+    </headerContent>
+    </Page>
+</mvc:View>

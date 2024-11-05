@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "Sel": false,
+      "MaterialCode": "M001",
+      "MaterialName": "Item 1",
+      "StockQty": 50,
+      "Value": 100,
+      "IssueQty": 1,
+      "GVCouponSLNo": "GV001",
+      "Brand": "Brand A",
+      "ExpiryDate": "2024-12-31"
+    },
+    {
+      "Sel": false,
+      "MaterialCode": "M002",
+      "MaterialName": "Item 2",
+      "StockQty": 30,
+      "Value": 200,
+      "IssueQty": 1,
+      "GVCouponSLNo": "GV002",
+      "Brand": "Brand B",
+      "ExpiryDate": "2025-06-30"
+    }
+  ]
+}

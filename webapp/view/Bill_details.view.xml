@@ -1,0 +1,134 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="gvtracker.controller.BillDetails" displayBlock="true">
+    <Page id="billDetailsPage" title="Gift Voucher Tracker - Customer Purchase Bill Details - CREATE Screen"> 
+        <content>
+            
+            <VBox width="100%" class="formSpacing5">
+
+                <!-- Customer Mobile and Total Bill Value -->
+                <VBox>
+                    <HBox>
+                        <Label text="Customer Mobile" class="Label3"/>
+                        <Input value="9898075750" />
+                    </HBox>
+                    <HBox>
+                        <Label text="Total Customer Bill Value" class="Label3"/>
+                        <Input value="₹ 6,500.00" />
+                    </HBox>
+                </VBox>
+
+                <!-- Table for Bill Details -->
+                <Table id="billTable" width="auto" inset="false" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Customer Purchase Bill Details" />
+                        </Toolbar>
+                    </headerToolbar>
+
+                    <columns>
+                        <Column>
+                            <Text text="Sl.No" />
+                        </Column>
+                        <Column>
+                            <Text text="Bill No" />
+                        </Column>
+                        <Column>
+                            <Text text="Bill Value" />
+                        </Column>
+                        <Column>
+                            <Text text="Take Photo" />
+                        </Column>
+                        <Column>
+                            <Text text="Upload Photo" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <!-- First Row -->
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="1" />
+                                <Text text="1000010101" />
+                                <Text text="500" />
+                                <Button text="Camera" />
+                                <Button text="Browse" />
+                            </cells>
+                        </ColumnListItem>
+
+                        <!-- Second Row -->
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="2" />
+                                <Text text="1000010102" />
+                                <Text text="1000" />
+                                <Button text="Camera" /> 
+                                <Button text="Browse" />
+                            </cells>
+                        </ColumnListItem>
+
+                        <!-- Third Row -->
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="3" />
+                                <Text text="4002222222" />
+                                <Text text="5000" />
+                                <Button text="Camera" /> 
+                                <Button text="Browse" />
+                            </cells>
+                        </ColumnListItem>
+
+                        <!-- Add more rows as needed -->
+                    </items>
+
+                    <!-- Add/Edit/Delete toolbar for table -->
+                    <infoToolbar>
+                        <Toolbar>
+                            <Button icon="sap-icon://add" tooltip="Add Row" />
+                            <Button icon="sap-icon://edit" tooltip="Edit Row" />
+                            <Button icon="sap-icon://delete" tooltip="Delete Row" />
+                        </Toolbar>
+                    </infoToolbar>
+                </Table>
+
+                <!-- Display Bill Photos
+                <HBox justifyContent="SpaceAround" width="100%">
+                    <VBox>
+                        <Text text="Display the 1st Bill Photo taken using Camera / Browse Options (1 photo to be added)" />
+                    </VBox>
+                    <VBox>
+                        <Text text="Display the 2nd Bill Photo taken using Camera / Browse Options (1 photo to be added)" />
+                    </VBox>
+                    <VBox>
+                        <Text text="Display the 3rd Bill Photo taken using Camera / Browse Options (1 photo to be added)" />
+                    </VBox>
+                </HBox> -->
+
+                  <!-- Boxes to Display Bill Photos -->
+                <HBox class="sapUiResponsiveMargin" alignItems="Center" justifyContent="Center">
+                    <VBox alignItems="Center" class="photoBox">
+                        <Text class="textWrap" text="Display the 1st Bill Photo taken using Camera / Browse Options" textAlign="Center"/> 
+                        <Image src="" width="200px" height="150px" id="photo1" />
+                         
+                    </VBox>
+                    
+                    <VBox alignItems="Center" class="photoBox">
+                       <Text class="textWrap" text="Display the 2nd Bill Photo taken using Camera / Browse Options" textAlign="Center"/>        
+                        <Image src="" width="200px" height="150px" id="photo2" />
+                    </VBox>
+                    
+                    <VBox alignItems="Center" class="photoBox">
+                        <Text class="textWrap" text="Display the 3rd Bill Photo taken using Camera / Browse Options" textAlign="Center"/>
+                        <Image src="" width="200px" height="150px" id="photo3" />
+                    </VBox>
+                </HBox>
+
+                <!-- Cancel and Submit buttons -->
+                <HBox justifyContent="Center" width="100%" class="buttonBox">
+                    <Button text="CANCEL" type="Reject" press="onOpenCamera"/>
+                    <Button text="SUBMIT" type="Accept" />
+                </HBox>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View> 
+       

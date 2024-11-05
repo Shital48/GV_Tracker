@@ -1,0 +1,21 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="gvtracker.controller.Main" displayBlock="true"><Page id="page" title="Gift Voucher Tracker - Customer Gift Issue Selection Screen">
+        <content>
+             <VBox alignItems="Center" justifyContent="Center" width="80%" height="100px"> 
+                <HBox alignItems="Center" justifyContent="SpaceAround" width="50%">  
+                <Text text="GVR Number [ CI ]"/>
+                <Input id="gvrInput" placeholder="Enter GVR Number" enabled="{/inputEnabled}" />
+                <items>
+                    <Button xmlns="sap.m" text="EXECUTE" press=".onNavigate"/>
+                </items>
+                </HBox>
+                <VBox>
+                    <RadioButton id="radioViewA" text="CREATE" selected="{/enableInput}" select=".onSelect"  />
+                    <RadioButton id="radioViewB" text="DISPLAY" selected="{/disableInput}" select=".onSelect" />
+                </VBox>
+            </VBox>
+        </content>
+    <headerContent>
+        <Button xmlns="sap.m" text="User Profile" id="button3"/>
+    </headerContent>
+    </Page>
+</mvc:View>
