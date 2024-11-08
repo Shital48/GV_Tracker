@@ -2,25 +2,64 @@
   "data": [
     {
       "Sel": false,
-      "MaterialCode": "M001",
-      "MaterialName": "Item 1",
-      "StockQty": 50,
-      "Value": 100,
+      "MaterialCode": "1000010101",
+      "MaterialName": "GV_MAX_500",
+      "StockQty": 1,
+      "Value": 500,
       "IssueQty": 1,
-      "GVCouponSLNo": "GV001",
-      "Brand": "Brand A",
-      "ExpiryDate": "2024-12-31"
+      "GVCouponSLNo": "SUM24/MAX/1200121",
+      "Brand": "MAX",
+      "ExpiryDate": "31.12.2024",
+      "isGiftArticle": false
     },
     {
       "Sel": false,
-      "MaterialCode": "M002",
-      "MaterialName": "Item 2",
-      "StockQty": 30,
-      "Value": 200,
+      "MaterialCode": "1000010101",
+      "MaterialName": "GV_MAX_500",
+      "StockQty": 1,
+      "Value": 500,
       "IssueQty": 1,
-      "GVCouponSLNo": "GV002",
-      "Brand": "Brand B",
-      "ExpiryDate": "2025-06-30"
+      "GVCouponSLNo": "SUM24/MAX/1200122",
+      "Brand": "MAX",
+      "ExpiryDate": "31.12.2024",
+      "isGiftArticle": false
+    },
+    {
+      "Sel": false,
+      "MaterialCode": "4002222222",
+      "MaterialName": "Water Kettle",
+      "StockQty": 10,
+      "Value": 750,
+      "IssueQty": 1,
+      "GVCouponSLNo": "",
+      "Brand": "MAX",
+      "ExpiryDate": "",
+      "isGiftArticle": true
+    },
+    {
+      "Sel": false,
+      "MaterialCode": "1000010104",
+      "MaterialName": "GV_MAX_1000",
+      "StockQty": 5,
+      "Value": 1000,
+      "IssueQty": 1,
+      "GVCouponSLNo": "SUM24/MAX/1200124",
+      "Brand": "MAX",
+      "ExpiryDate": "31.12.2024",
+      "isGiftArticle": false
+    },
+    {
+      "Sel": false,
+      "MaterialCode": "4002222225",
+      "MaterialName": "Lunch Box",
+      "StockQty": 20,
+      "Value": 1000,
+      "IssueQty": 1,
+      "GVCouponSLNo": "",
+      "Brand": "MAX",
+      "ExpiryDate": "",
+      "isGiftArticle": true
     }
+
   ]
 }

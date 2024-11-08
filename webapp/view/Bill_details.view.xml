@@ -1,4 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="gvtracker.controller.BillDetails" displayBlock="true">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:unified="sap.ui.unified" controllerName="gvtracker.controller.BillDetails" displayBlock="true">
     <Page id="billDetailsPage" title="Gift Voucher Tracker - Customer Purchase Bill Details - CREATE Screen"> 
         <content>
             
@@ -50,9 +50,15 @@
                                 <Text text="1000010101" />
                                 <Text text="500" />
                                 <Button text="Camera" />
-                                <Button text="Browse" />
+                                <unified:FileUploader 
+                                    id="fileUploader" 
+                                    buttonOnly="true" 
+                                    buttonText="Browse" 
+                                    change="onFileChange"
+                                    tooltip="Select a photo" />
                             </cells>
                         </ColumnListItem>
+                        
 
                         <!-- Second Row -->
                         <ColumnListItem>
@@ -88,38 +94,31 @@
                         </Toolbar>
                     </infoToolbar>
                 </Table>
+ 
+              
+                    
+                <HBox id="photoDisplayLane" justifyContent="SpaceAround" alignItems="Center"    class="photoDisplayLane">
+                    <!-- Dynamically added Image controls will go here -->
+                </HBox>
 
-                <!-- Display Bill Photos
-                <HBox justifyContent="SpaceAround" width="100%">
-                    <VBox>
-                        <Text text="Display the 1st Bill Photo taken using Camera / Browse Options (1 photo to be added)" />
-                    </VBox>
-                    <VBox>
-                        <Text text="Display the 2nd Bill Photo taken using Camera / Browse Options (1 photo to be added)" />
-                    </VBox>
-                    <VBox>
-                        <Text text="Display the 3rd Bill Photo taken using Camera / Browse Options (1 photo to be added)" />
-                    </VBox>
-                </HBox> -->
-
-                  <!-- Boxes to Display Bill Photos -->
-                <HBox class="sapUiResponsiveMargin" alignItems="Center" justifyContent="Center">
+                  <!-- Boxes to Display Bill Photos
+                <HBox class="sapUiResponsiveMargin">
                     <VBox alignItems="Center" class="photoBox">
                         <Text class="textWrap" text="Display the 1st Bill Photo taken using Camera / Browse Options" textAlign="Center"/> 
-                        <Image src="" width="200px" height="150px" id="photo1" />
+                        <Image src="" width="200px" height="150px"  />
                          
                     </VBox>
                     
                     <VBox alignItems="Center" class="photoBox">
                        <Text class="textWrap" text="Display the 2nd Bill Photo taken using Camera / Browse Options" textAlign="Center"/>        
-                        <Image src="" width="200px" height="150px" id="photo2" />
+                        <Image src="" width="200px" height="150px"  />
                     </VBox>
                     
                     <VBox alignItems="Center" class="photoBox">
                         <Text class="textWrap" text="Display the 3rd Bill Photo taken using Camera / Browse Options" textAlign="Center"/>
-                        <Image src="" width="200px" height="150px" id="photo3" />
+                        <Image src="" width="200px" height="150px"   />
                     </VBox>
-                </HBox>
+                </HBox> -->
 
                 <!-- Cancel and Submit buttons -->
                 <HBox justifyContent="Center" width="100%" class="buttonBox">
@@ -128,6 +127,9 @@
                 </HBox>
 
             </VBox>
+
+             
+
         </content>
     </Page>
 </mvc:View> 

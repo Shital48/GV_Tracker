@@ -13,6 +13,7 @@ sap.ui.define([
 
         onInit: function () {
 
+           
 
             // Set current date in 'yyyy-MM-dd' format
             const oDate = new Date();
@@ -142,8 +143,7 @@ sap.ui.define([
                 this.calculateTotalValue(); // Recalculate total whenever selection changes
 
             },
-
-        
+           
         
             onCustomerMobileValueHelp: function (oEvent) {
                 var oInput = oEvent.getSource();
@@ -364,38 +364,46 @@ sap.ui.define([
 
 
         onIssueQtyChange: function (oEvent) {
-            var sNewValue = oEvent.getParameter("value");
-            var oContext = oEvent.getSource().getBindingContext();
-            var oQtyModel = this.getView().getModel();
+
+            var oInput = oEvent.getSource();
+            var sValue = oInput.getValue();
+            var oContext = oInput.getBindingContext();
+            var iStockQty = oContext.getProperty("StockQty");
+
+            // Validate that the Issue Quantity is numeric
+            if (isNaN(sValue) || sValue.trim() === "") {
+            oInput.setValueState("Error");
+            oInput.setValueStateText("Maintain a valid Quantity value");
+            return;
+            }
+
+            // Validate that Issue Quantity is not greater than Stock Quantity
+            if (parseInt(sValue) > iStockQty) {
+            oInput.setValueState("Error");
+            oInput.setValueStateText("The issue qty should not be more than the stock quantity");
+            } else {
+            oInput.setValueState("None");
+            }
             
-            // Get the selected item from the model
-            var oSelectedItem = oContext.getObject();
-        
-            // Validate input: check if it's a number
-            if (!/^\d+$/.test(sNewValue) && sNewValue !== "") { // Allow empty input
-                MessageToast.show("Maintain a valid Quantity value");
-                // Reset to previous value
-                oEvent.getSource().setValue(oSelectedItem.IssueQty);
-                return;
+                // Optionally, recalculate total value if needed
+                this.calculateTotalValue();
+            },
+             // Event handler for the liveChange of the Issue Quantity field
+             onLiveChange: function (oEvent) {
+                var sValue = oEvent.getParameter("value");
+                var oInput = oEvent.getSource();
+                
+                // Check if the value contains any non-numeric characters
+                if (isNaN(sValue)&& sValue !== "") {
+                oInput.setValueState("Error");
+                oInput.setValueStateText("Maintain a valid Quantity value");
+                } else {
+                oInput.setValueState("None");
+                }
             }
         
-            var iNewQty = parseInt(sNewValue, 10);
+
         
-            // Validate input: check if new quantity is greater than stock quantity
-            if (iNewQty > oSelectedItem.StockQty) {
-                MessageToast.show("The issue qty should not be more than the stock quantity");
-                // Reset to previous value
-                oEvent.getSource().setValue(oSelectedItem.IssueQty);
-                return;
-            }
-        
-            // Update the IssueQty in the model
-            oSelectedItem.IssueQty = iNewQty;
-            oQtyModel.setProperty(oContext.sPath, oSelectedItem);
-        
-            // Optionally, recalculate total value if needed
-            this.calculateTotalValue();
-        }
         
     });
 });

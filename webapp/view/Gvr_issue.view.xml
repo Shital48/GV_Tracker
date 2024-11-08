@@ -21,8 +21,9 @@
                         <form:fields>
                             <Select xmlns="sap.m" id="select0">
                                 <items>
-                                    <core:Item xmlns:core="sap.ui.core" key="item-key-1" text="Item Text One" id="item1"/>
-                                    <core:Item xmlns:core="sap.ui.core" key="item-key-2" text="Item Text Two" id="item2"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="item-key-1" text="Mall Customer" />
+                                    <core:Item xmlns:core="sap.ui.core" key="item-key-2" text="Employee"  />
+                                    <core:Item xmlns:core="sap.ui.core" key="item-key-2" text="Contract" />
                                     </items>
                                 
                             </Select>
@@ -101,16 +102,16 @@
      
         
 
-            <Panel id="panel1" width="100%">
-                <content>
+           <Panel>
+                <content>  
                     <HBox>
                         <items>
-                            <Label text="Comments" width="90px" id="label90" class="commentLabelSize"/>
-                            <Input xmlns="sap.m" value="" width="1370px" id="cmt1" class="commentInput"/>
+                            <Label text="Comments" class="ComentLable" />
+                            <Input xmlns="sap.m" value="Value" width="86vw" class="ComentIP" />
                         </items>
                     </HBox>
                 </content>
-            </Panel>
+            </Panel>  
  
      <!-- <Title text="Gift Item Details for Customer Issue" level="H2"/> -->
         <Table items="{/data}" id="idProductsTable" >
@@ -157,7 +158,10 @@
                         <Text text="{MaterialName}"/>
                         <Text text="{StockQty}"/>
                         <Text text="{Value}"/>
-                        <Input value="{IssueQty}" editable="{IsGiftArticle}" change=".onIssueQtyChange"/>
+                        <Input value="{IssueQty}" editable="{isGiftArticle}" change=".onIssueQtyChange" type="Number" maxLength="5" 
+                        liveChange="onLiveChange" valueStateText="Maintain a valid Quantity value" valueState="None" placeholder="1" />
+                         
+               
                         <Text text="{GVCouponSLNo}"/>
                         <Text text="{Brand}"/>
                         <Text text="{ExpiryDate}"/>

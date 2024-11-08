@@ -1,21 +1,35 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="gvtracker.controller.Main" displayBlock="true"><Page id="page" title="Gift Voucher Tracker - Customer Gift Issue Selection Screen">
         <content>
-             <VBox alignItems="Center" justifyContent="Center" width="80%" height="100px"> 
-                <HBox alignItems="Center" justifyContent="SpaceAround" width="50%">  
-                <Text text="GVR Number [ CI ]"/>
-                <Input id="gvrInput" placeholder="Enter GVR Number" enabled="{/inputEnabled}" />
+             <VBox alignItems="Center" justifyContent="Center" width="100%" height="45%"> 
+                <HBox  justifyContent="SpaceAround" width="30%">  
+                <Text text="GVR Number"/>
+                <Input id="inputField" placeholder="Enter GVR Number" editable="{/inputEditable}" /> 
+                
                 <items>
-                    <Button xmlns="sap.m" text="EXECUTE" press=".onNavigate"/>
+                    <Button xmlns="sap.m" text="EXECUTE" press=".onExecutePress"/>
                 </items>
                 </HBox>
-                <VBox>
-                    <RadioButton id="radioViewA" text="CREATE" selected="{/enableInput}" select=".onSelect"  />
-                    <RadioButton id="radioViewB" text="DISPLAY" selected="{/disableInput}" select=".onSelect" />
+                <VBox alignItems="Start" justifyContent="Start" width="28%">
+                     <!-- RadioButtonGroup with Create and Display options -->
+                <RadioButtonGroup 
+                    id="radioGroup"
+                    columns="1" 
+                    select="onRadioButtonSelect"
+                    selectedIndex="1">
+                    
+                    <buttons >
+                        <RadioButton text="Create" />
+                        <RadioButton text="Display" />
+                    </buttons>
+                </RadioButtonGroup>
+
+                
                 </VBox>
             </VBox>
         </content>
     <headerContent>
-        <Button xmlns="sap.m" text="User Profile" id="button3"/>
+        <Button xmlns="sap.m" text="User Profile" id="button3"/> 
+
     </headerContent>
     </Page>
 </mvc:View>

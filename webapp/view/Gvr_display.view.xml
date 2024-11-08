@@ -60,16 +60,27 @@
             </form:formContainers>
         </form:Form>
      
-         <Panel id="panel2" width="100%">
-                <content>
+         <!-- <Panel id="panel2">
+                <content>  
                     <HBox>
                         <items>
                             <Label text="Comments" width="90px" id="label0" class="commentLabelSize"/>
-                            <Input xmlns="sap.m" value="Value" width="1370px" id="cmt" class="commentInput" editable="false"/>
+                            <Input xmlns="sap.m" value="Value" class="commentInput" editable="false"/>
+                        </items>
+                    </HBox>
+                 </content>
+            </Panel> -->
+
+            <Panel id="panel12">
+                <content>  
+                    <HBox>
+                        <items>
+                            <Label text="Comments" class="ComentLable" />
+                            <Input xmlns="sap.m" value="Value" width="86vw" class="ComentIP" />
                         </items>
                     </HBox>
                 </content>
-            </Panel>
+            </Panel>  
 
      
 

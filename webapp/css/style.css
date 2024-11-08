@@ -75,6 +75,7 @@
         margin: 0.25rem; /* Further reduce margin for mobile screens */
     }
 }
+.commentLabelSize
 .photoBox {
     border: 1px solid #ccc;
     padding: 0px;
@@ -104,9 +105,20 @@
 }
 .commentLabelSize {
     margin-right: 10px; /* Adds space between the label and the input */
-    margin-left: 20px;
+    /* margin-left: 20px; */
+    margin-left: 2.6rem;
 }
 
-.commentInput {
-    width: 100%; /* Ensures the input field fills the available space */
+#commentInput {
+    width: 86vw !important;
+
 } 
+.ComentIP{
+    margin-left: 3.5rem !important;
+}
+.ComentLable{
+    margin-left: 2.5rem;
+}
+/* .photoThumbnail {
+    margin-right: 10px;  
+} */
