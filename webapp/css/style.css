@@ -60,21 +60,7 @@
     border-radius: 10px; /* Optional: Add rounded corners */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow effect */
 }
-.sapUiResponsiveMargin {
-    margin: 1rem; /* Apply 1 rem (relative to the root font size) of margin on all sides */
-}
-
-@media (max-width: 1024px) {
-    .sapUiResponsiveMargin {
-        margin: 0.5rem; /* Reduce margin for smaller screens like tablets */
-    }
-}
-
-@media (max-width: 600px) {
-    .sapUiResponsiveMargin {
-        margin: 0.25rem; /* Further reduce margin for mobile screens */
-    }
-}
+ 
 .commentLabelSize
 .photoBox {
     border: 1px solid #ccc;
@@ -100,7 +86,8 @@
 }
  
 .buttonSize{ 
-    margin-left: 165px; 
+    margin-left: 135px; 
+    width: 16rem !important;
     /* width: 500px; */
 }
 .commentLabelSize {
@@ -114,7 +101,7 @@
 
 } 
 .ComentIP{
-    margin-left: 3.5rem !important;
+    margin-left: 1.8rem !important;
 }
 .ComentLable{
     margin-left: 2.5rem;
@@ -122,3 +109,8 @@
 /* .photoThumbnail {
     margin-right: 10px;  
 } */
+
+.marginTop {
+    margin-top: 1px; /* Adjust the value as needed */
+    margin-bottom: 20px;
+}

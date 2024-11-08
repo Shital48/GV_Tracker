@@ -69,13 +69,13 @@
 
                         <form:FormElement>
                         <form:fields> 
-                            <Button id="saveButton" text="Add Customer Profile" press="onNavigate1" width="65%" class="buttonSize"/>
+                            <Button id="saveButton" text="Add Customer Profile" press="onNavigate1" class="buttonSize"/>
                         </form:fields>  
                         </form:FormElement> 
 
                         <form:FormElement>
                         <form:fields> 
-                            <Button id="saveButton1" text="Add Customer Bill Info" press="onNavigate2" width="65%" class="buttonSize"/>
+                            <Button id="saveButton1" text="Add Customer Bill Info" press="onNavigate2" class="buttonSize"/>
                         </form:fields>  
                         </form:FormElement>
 
@@ -102,12 +102,12 @@
      
         
 
-           <Panel>
+           <Panel >
                 <content>  
-                    <HBox>
+                    <HBox class="marginTop">
                         <items>
                             <Label text="Comments" class="ComentLable" />
-                            <Input xmlns="sap.m" value="Value" width="86vw" class="ComentIP" />
+                            <Input xmlns="sap.m" value="Value" width="85.5vw" class="ComentIP" />
                         </items>
                     </HBox>
                 </content>
