@@ -8,19 +8,10 @@
                
 
                  <VBox justifyContent="Center" alignItems="Center" height="21rem">    
+                 
                 
-                <HBox width="35%" justifyContent="SpaceBetween">
-                 <FlexBox direction="Column" justifyContent="SpaceAround">
-                    <Label text="Cust. Mobile Number" id="label30" class="CustProfileLabel"/>
-                    <Label text="Mobile Country Code" id="label31" class="CustProfileLabel"/>
-                    <Label text="Customer Title" id="label01" class="CustProfileLabel1"/> 
-                    <Label text="Customer Name" id="label02" class="CustProfileLabel"/>
-                    <Label text="Customer Email" id="label04" class="CustProfileLabel"/>
-                
-                
-                </FlexBox>
-
-                <FlexBox direction="Column"> 
+                <HBox>
+                    <Label text="Cust. Mobile Number" id="label30" class="LabelAlign"/>
                     <Input 
                         id="CustNo" 
                         type="Text" 
@@ -30,8 +21,12 @@
                         valueState="None" 
                         required="true" 
                     />
-                                        
-                    <Input
+                 
+                 </HBox> 
+
+                <HBox>
+                    <Label text="Mobile Country Code" id="label31" class="LabelAlign"/>
+                  <Input
                         id="countryCodeInput" placeholder="Select Country Code" valueHelpRequest="onCountryCodeHelp" showValueHelp="true"
                         liveChange="onCountryCodeChange"
                         type="Number"
@@ -39,6 +34,9 @@
                         valueStateText="Please enter a valid numeric country code."
                         valueState="None"
                     />
+                 </HBox> 
+                <HBox>
+                    <Label text="Customer Title" id="label01" class="LabelAlign"/> 
                     <Select xmlns="sap.m" id="CustTitle" class="CustProfileInput1" width="18rem">
                         <items>
                             <core:Item xmlns:core="sap.ui.core" key="item-key-1" text="Mr."  />
@@ -47,6 +45,9 @@
                             <core:Item xmlns:core="sap.ui.core" key="item-key-4" text="Mast." /> 
                         </items> 
                     </Select> 
+                 </HBox> 
+                <HBox>
+                    <Label text="Customer Name" id="label02" class="LabelAlign"/>
                     <Input 
                         id="customerNameInput" 
                         type="Text" 
@@ -55,7 +56,12 @@
                         valueStateText="Maintain a valid Customer Name"
                         valueState="None" 
                     />
-                    <Input 
+                 
+                 </HBox> 
+                <HBox >
+                   
+                    <Label text="Customer Email" id="label04" class="LabelAlign"/>
+                 <Input 
                         id="customerEmailInput" 
                         type="Text" 
                         placeholder="Enter Email ID" 
@@ -63,11 +69,8 @@
                         valueStateText="Maintain a valid Email ID"
                         valueState="None" 
                     />
-                
-                </FlexBox>
-                
-                
-                </HBox>
+                 </HBox> 
+               
                     
                     <HBox>
                         <Button xmlns="sap.m" text="CANCEL" id="button1" class="spaceBtn1" press="onCancelPress"/>

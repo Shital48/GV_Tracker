@@ -85,8 +85,7 @@
     margin-right: 50;
 }
  
-.buttonSize{ 
-    margin-left: 135px; 
+.buttonSize{   
     width: 16rem !important;
     /* width: 500px; */
 }
@@ -113,4 +112,11 @@
 .marginTop {
     margin-top: 1px; /* Adjust the value as needed */
     margin-bottom: 20px;
+}
+.LabelAlign{
+    /* margin-left: 1.8rem !important; */
+    width: 10rem;
+}
+.InputAlign{
+    margin-left: 1.8rem !important;
 }
