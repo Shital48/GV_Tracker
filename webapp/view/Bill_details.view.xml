@@ -17,7 +17,7 @@
                 </VBox>
 
                 <!-- Table for Bill Details -->
-                <Table id="billTable" width="auto" inset="false" class="sapUiResponsiveMargin">
+                <Table id="billDetailsTable" width="auto" inset="false" items="{/records}" class="sapUiResponsiveMargin">
                     <headerToolbar>
                         <Toolbar>
                             <Title text="Customer Purchase Bill Details" />
@@ -52,10 +52,11 @@
                                 <Button text="Camera" />
                                 <unified:FileUploader 
                                     id="fileUploader" 
-                                    buttonOnly="true" 
-                                    buttonText="Browse" 
-                                    change="onFileChange"
-                                    tooltip="Select a photo" />
+                                    uploadUrl=""
+                                    change="onFileUploadChange"
+                                    fileType="image/*"
+                                    name="fileUploader"
+                                    width="150px" />
                             </cells>
                         </ColumnListItem>
                         
@@ -78,8 +79,8 @@
                                 <Text text="4002222222" />
                                 <Text text="5000" />
                                 <Button text="Camera" /> 
-                                <Button text="Browse" />
-                            </cells>
+                                <Button text="Browse"/> 
+                                </cells>
                         </ColumnListItem>
 
                         <!-- Add more rows as needed -->
@@ -88,37 +89,24 @@
                     <!-- Add/Edit/Delete toolbar for table -->
                     <infoToolbar>
                         <Toolbar>
-                            <Button icon="sap-icon://add" tooltip="Add Row" />
-                            <Button icon="sap-icon://edit" tooltip="Edit Row" />
-                            <Button icon="sap-icon://delete" tooltip="Delete Row" />
+                            <Button icon="sap-icon://add" text="Add Row" press="onAddRow" /> 
+                            <Button icon="sap-icon://delete" text="Delete" press="onDeleteRow" />
                         </Toolbar>
                     </infoToolbar>
                 </Table>
  
               
-                    
-                <HBox id="photoDisplayLane" justifyContent="SpaceAround" alignItems="Center"    class="photoDisplayLane">
-                    <!-- Dynamically added Image controls will go here -->
+                <!-- Display Pane for Uploaded Images -->
+                <HBox id="idDisplayPane" wrap="Wrap" justifyContent="SpaceBetween">
+                    <items>
+                    <Image src="{/images/0}" width="80px" visible="true" />
+                    <Image src="{/images/1}" width="80px" visible="true" />
+                    <Image src="{/images/2}" width="80px" visible="true" />
+                    <Image src="{/images/3}" width="80px" visible="true" />
+                    </items>
                 </HBox>
 
-                  <!-- Boxes to Display Bill Photos
-                <HBox class="sapUiResponsiveMargin">
-                    <VBox alignItems="Center" class="photoBox">
-                        <Text class="textWrap" text="Display the 1st Bill Photo taken using Camera / Browse Options" textAlign="Center"/> 
-                        <Image src="" width="200px" height="150px"  />
-                         
-                    </VBox>
-                    
-                    <VBox alignItems="Center" class="photoBox">
-                       <Text class="textWrap" text="Display the 2nd Bill Photo taken using Camera / Browse Options" textAlign="Center"/>        
-                        <Image src="" width="200px" height="150px"  />
-                    </VBox>
-                    
-                    <VBox alignItems="Center" class="photoBox">
-                        <Text class="textWrap" text="Display the 3rd Bill Photo taken using Camera / Browse Options" textAlign="Center"/>
-                        <Image src="" width="200px" height="150px"   />
-                    </VBox>
-                </HBox> -->
+                   
 
                 <!-- Cancel and Submit buttons -->
                 <HBox justifyContent="Center" width="100%" class="buttonBox">
