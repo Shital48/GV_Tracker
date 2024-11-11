@@ -49,6 +49,10 @@
                             <Input id="Fiel1d1" width="100%" editable="false"/>
                         </form:FormElement>
 
+                        <form:FormElement >
+                            <Button id="BilldisplayBtn" text="View Customer Bill Info" width="66%" class="BillInfoSize" press="onNavigate3"/>
+                        </form:FormElement>
+
                         <form:FormElement label="Campaign">
                             <Input id="Fie1l2d2" width="100%" editable="false"/>
                         </form:FormElement>

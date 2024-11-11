@@ -1,7 +1,6 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:unified="sap.ui.unified" controllerName="gvtracker.controller.BillDetails" displayBlock="true">
     <Page id="billDetailsPage" title="Gift Voucher Tracker - Customer Purchase Bill Details - CREATE Screen"> 
         <content>
-            
             <VBox width="100%" class="formSpacing5">
 
                 <!-- Customer Mobile and Total Bill Value -->
@@ -17,7 +16,7 @@
                 </VBox>
 
                 <!-- Table for Bill Details -->
-                <Table id="billDetailsTable" width="auto" inset="false" items="{/records}" class="sapUiResponsiveMargin">
+                <Table id="billDetailsTable" width="auto" inset="false" items="{/records}" class="sapUiResponsiveMargin" selectionChange="onRowSelect">
                     <headerToolbar>
                         <Toolbar>
                             <Title text="Customer Purchase Bill Details" />
@@ -50,16 +49,9 @@
                                 <Text text="1000010101" />
                                 <Text text="500" />
                                 <Button text="Camera" />
-                                <unified:FileUploader 
-                                    id="fileUploader" 
-                                    uploadUrl=""
-                                    change="onFileUploadChange"
-                                    fileType="image/*"
-                                    name="fileUploader"
-                                    width="150px" />
+                                <Button text="Browse" />
                             </cells>
                         </ColumnListItem>
-                        
 
                         <!-- Second Row -->
                         <ColumnListItem>
@@ -80,10 +72,8 @@
                                 <Text text="5000" />
                                 <Button text="Camera" /> 
                                 <Button text="Browse"/> 
-                                </cells>
+                            </cells>
                         </ColumnListItem>
-
-                        <!-- Add more rows as needed -->
                     </items>
 
                     <!-- Add/Edit/Delete toolbar for table -->
@@ -94,31 +84,24 @@
                         </Toolbar>
                     </infoToolbar>
                 </Table>
- 
-              
+
                 <!-- Display Pane for Uploaded Images -->
                 <HBox id="idDisplayPane" wrap="Wrap" justifyContent="SpaceBetween">
                     <items>
-                    <Image src="{/images/0}" width="80px" visible="true" />
-                    <Image src="{/images/1}" width="80px" visible="true" />
-                    <Image src="{/images/2}" width="80px" visible="true" />
-                    <Image src="{/images/3}" width="80px" visible="true" />
+                        <Image src="{/images/0}" width="80px" visible="true" />
+                        <Image src="{/images/1}" width="80px" visible="true" />
+                        <Image src="{/images/2}" width="80px" visible="true" />
+                        <Image src="{/images/3}" width="80px" visible="true" />
                     </items>
                 </HBox>
 
-                   
-
                 <!-- Cancel and Submit buttons -->
                 <HBox justifyContent="Center" width="100%" class="buttonBox">
-                    <Button text="CANCEL" type="Reject" press="onOpenCamera"/>
+                    <Button text="CANCEL" type="Reject" press="onCancelCreateBill"/>
                     <Button text="SUBMIT" type="Accept" />
                 </HBox>
 
             </VBox>
-
-             
-
         </content>
     </Page>
-</mvc:View> 
-       
+</mvc:View>

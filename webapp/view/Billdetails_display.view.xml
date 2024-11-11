@@ -112,7 +112,7 @@
 
                 <!-- Cancel and Submit buttons -->
                 <HBox justifyContent="Center" width="100%" class="buttonBox">
-                    <Button text="CANCEL" type="Reject" press="onOpenCamera"/>
+                    <Button text="CANCEL" type="Reject" press="onCancelPress1"/>
                     <Button text="SUBMIT" type="Accept"/>
                 </HBox>
 
