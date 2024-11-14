@@ -46,9 +46,11 @@
                     </items>
                 </Table>
 
-                 <!-- VBoxes to display the added bill photo -->
-            <VBox width="100%" justifyContent="Center" alignItems="Center">
-                <!-- Row for Image Placeholders -->
+                <VBox id="imageContainer">
+    <!-- Other items or controls can be here -->
+</VBox>
+
+            <!-- <VBox width="100%" justifyContent="Center" alignItems="Center"> 
                 <HBox justifyContent="SpaceAround" width="100%">
                     <VBox id="imageVBox1" class="imageBox vboxBorder" alignItems="Center" justifyContent="Center" width="150px" height="170px" visible="false">
                         <Text id="srNo1" text="1" class="srNoText"/>
@@ -88,7 +90,7 @@
                 </HBox>
 
              
-            </VBox>
+            </VBox> -->
 
             <!-- Dialog to upload the image -->
                 <Dialog id="uploadDialog" title="Upload Image" stretchOnPhone="true">

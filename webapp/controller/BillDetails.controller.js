@@ -20,30 +20,100 @@ sap.ui.define([
                 }
                    ]
           };
+
+           // Create and add VBox dynamically to the view
+        var newVBox = new sap.m.VBox({
+           // id: "imageVBox" + 1,
+            // class: "imageBox vboxBorder",
+            alignItems: "Center",
+            justifyContent: "Center",
+            width: "150px",
+            height: "170px",
+            visible: true
+        });
+    
+        var text = new sap.m.Text({
+           // id: "srNo" + 1,
+            text: 1
+            // class: "srNoText"
+        });
+    
+        var image = new sap.m.Image({
+          //  id: "image" + 1,
+            src: "",
+            width: "140px",
+            height: "140px",
+            visible: true,
+            press: this.onImagePress.bind(this)
+        });
+    
+        newVBox.addItem(text);
+        newVBox.addItem(image);
+    
+        // Append the new VBox to the existing container
+        this.byId("imageContainer").addItem(newVBox); 
+        console.log("Available VBox IDs:", this.byId("imageContainer").getItems().map(function(item) { return item.getId(); }));
+
+
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel);
           
       },
       
 
-      // Add Row logic
       onAddRow: function () {
-          var oModel = this.getView().getModel();
-          var oData = oModel.getData();
-
+        var oModel = this.getView().getModel();
+        var oData = oModel.getData();
+    
         // Calculate next SlNo based on the length of the records array
         var newSlNo = oData.records.length + 1;
-
-          var newRow = {
-              SlNo: newSlNo, // Calculate new SlNo
-              billNo: "",  // Empty fields for new row
-              billValue: "",
-              photoPath: ""
-          };
-          oData.records.push(newRow); // Add new row to the records array
-          oModel.setData(oData); // Update the model with new data
-          console.log("New row added:", newRow);
-      },
+    
+        var newRow = {
+            SlNo: newSlNo, 
+            billNo: "",
+            billValue: "",
+            photoPath: ""
+        };
+        
+        // Add new row to the records array
+        oData.records.push(newRow);
+        oModel.setData(oData); // Update the model with new data
+    
+        // Create and add VBox dynamically to the view
+        var newVBox = new sap.m.VBox({
+          //  id: "imageVBox" + newSlNo,
+            // class: "imageBox vboxBorder",
+            alignItems: "Center",
+            justifyContent: "Center",
+            width: "150px",
+            height: "170px",
+            visible: true
+        });
+    
+        var text = new sap.m.Text({
+           // id: "srNo" + newSlNo,
+            text: newSlNo
+            // class: "srNoText"
+        });
+    
+        var image = new sap.m.Image({
+           // id: "image" + newSlNo,
+            src: "",
+            width: "140px",
+            height: "140px",
+            visible: true,
+            press: this.onImagePress.bind(this)
+        });
+    
+        newVBox.addItem(text);
+        newVBox.addItem(image);
+    
+        // Append the new VBox to the existing container
+        this.byId("imageContainer").addItem(newVBox);
+        console.log("New row added with SlNo:", newSlNo);
+       // console.log("texttt:","imageVBox" + newSlNo);
+    },
+    
 
       // Row Selection logic (via selectionChange)
       onRowSelect: function (oEvent) {
@@ -51,67 +121,73 @@ sap.ui.define([
         var aSelectedItems = oTable.getSelectedItems();
      },
 
-      // Delete Row logic
-      onDeleteRow: function () { 
+     onDeleteRow: function () {
         var oTable = this.byId("billDetailsTable");
         var aSelectedItems = oTable.getSelectedItems();
-  
+    
         if (aSelectedItems.length === 0) {
-          MessageToast.show("Please select rows to delete.");
-          return;
-          }
-        
-          var oModel = this.getView().getModel();
-          var aData = oModel.getProperty("/records");
-          var that = this;  // Capture 'this' context outside the loop
-          // Log selected items to check their context
-    console.log("Selected Items: ", aSelectedItems);
-        
-          // Delete the selected rows from the data model
-      aSelectedItems.forEach(function (oItem) {
+            MessageToast.show("Please select rows to delete.");
+            return;
+        }
+    
+        var oModel = this.getView().getModel();
+        var aData = oModel.getProperty("/records");
+    
+         // Collect indexes of selected items, then sort in descending order
+    var aIndexes = aSelectedItems.map(function (oItem) {
         var oContext = oItem.getBindingContext();
-        if (!oContext) {
-            console.error("No binding context found for this row!");
-            return; // Skip this item if no context is found
-        }
         var oRowData = oContext.getObject();
-        if (!oRowData) {
-            console.error("No row data found in context.");
-            return; // Skip if row data is missing
-        }
-         // Ensure the row data has SlNo before accessing it
-         console.log("Row Data:", oRowData);
-        var iIndex = aData.findIndex(function (item) {
-          return item.SlNo === oRowData.SlNo;
+        return aData.findIndex(function (item) {
+            return item.SlNo === oRowData.SlNo;
         });
+    }).sort(function (a, b) { return b - a; }); // Sort in reverse order
 
+    // Remove selected rows and corresponding VBoxes
+    aIndexes.forEach(function (iIndex) {
         if (iIndex !== -1) {
-            console.log("imageVBox" + (iIndex+1));
-            var oVBox = that.byId("imageVBox" + (iIndex + 1));
+            // Remove corresponding VBox from view
+            var oVBox = this.byId("imageContainer").getItems()[iIndex];
             if (oVBox) {
-                oVBox.setVisible(false);
+                oVBox.destroy();
             }
-          aData.splice(iIndex, 1); // Remove the item from the arrayy
-          
-        } 
-        else {
-            console.error("Row with SlNo not found in data.");
+
+            // Remove the row from the data model
+            aData.splice(iIndex, 1);
         }
-    },this);
+    }, this);
+    
+        // Recalculate SlNo for all remaining rows and update the text of the VBoxes
+        aData.forEach(function (oRow, index) {
+            oRow.SlNo = index + 1;
+             // Update text inside corresponding VBox in imageContainer
+        var oVBox = this.byId("imageContainer").getItems()[index];
+        if (oVBox) {
+ 
+            var oTextItems = oVBox.getItems(); // Get items inside VBox
+            oTextItems.forEach(function(item) {
+                if (item.isA("sap.m.Text")) { // Check if the item is a Text control
+                    item.setText(oRow.SlNo); // Update the text with the new SlNo value
+                }
+            });
 
-     // Recalculate SlNo for all remaining rows
-     aData.forEach(function (oRow, index) {
-        oRow.SlNo = index + 1;  // Update SlNo to reflect the new sequence
-    });
-    // Update the model with the modified data
-    oModel.setProperty("/records", aData);
-
-    // Deselect all rows after deletion
-    oTable.removeSelections(true);
-
-    MessageToast.show("Selected rows deleted.");
-      },
-
+        }
+            // var oText = this.byId("srNo" + (index + 1));
+            // console.log("oText:"+oText);
+            // if (oText) {
+            //     oText.setText(oRow.SlNo); // Update Text inside the VBox
+            // }
+            
+        }, this);
+    
+        // Update the model with the modified data
+        oModel.setProperty("/records", aData);
+    
+        // Deselect all rows after deletion
+        oTable.removeSelections(true);
+    
+        MessageToast.show("Selected rows deleted.");
+    },
+    
       // Cancel logic
       onCancelCreateBill: function() {
           var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -241,13 +317,14 @@ sap.ui.define([
     // Update the image in the specified VBox
     _updateVBoxImage: function (sBase64) {
         console.log("Current Row:", this.currentRow);
-        var oVBox = this.byId("imageVBox" + this.currentRow);
-        console.log("VBox:", "imageVBox" + this.currentRow);
+        //var oVBox = this.byId("imageVBox" + (this.currentRow-1));
+        var oVBox = this.byId("imageContainer").getItems()[this.currentRow-1];
+        console.log("oVBox before update:", oVBox);
+        console.log("After oVBox Available VBox IDs:", this.byId("imageContainer").getItems().map(function(item) { return item.getId(); }));
 
-    if (!oVBox) {
-        console.error("VBox not found for currentRow:", this.currentRow);
-        return;
-    }
+        console.log("VBox for row", this.currentRow, ":", oVBox);
+       // oVBox.setVisible(true);
+    if (oVBox) {
         // Clear previous images and add the new image
         oVBox.removeAllItems();
         oVBox.addItem(new sap.m.Text({ text: this.currentRow }));
@@ -257,13 +334,17 @@ sap.ui.define([
             height: "140px",
             press: this.onImagePress.bind(this)
         }));
-        oVBox.setVisible(true);
+        
+    }else {
+        console.error("VBox not found for currentRow:", this.currentRow);
+        
+    }
     },
 
     onImagePress: function (oEvent) {
         var oImageSrc = oEvent.getSource().getSrc();
-        var oVBoxId = oEvent.getSource().getParent().getId();
-        var oSrNoText = this.byId(oVBoxId).getItems()[0].getText();
+       // var oVBoxId = oEvent.getSource().getParent().getId();
+       // var oSrNoText = this.byId(oVBoxId).getItems()[0].getText();
     
         if (!this._oImageDialog) {
             this._oImageDialog = new sap.m.Dialog({
@@ -282,7 +363,7 @@ sap.ui.define([
             });
         } else {
             this._oImageDialog.getContent()[0].setSrc(oImageSrc);  // Update image source
-            this._oImageDialog.getContent()[1].setText("Uploaded from " + oSrNoText); // Update row number
+           // this._oImageDialog.getContent()[1].setText("Uploaded from " + oSrNoText); // Update row number
         }
     
         this._oImageDialog.open();
