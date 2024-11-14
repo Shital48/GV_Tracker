@@ -1,8 +1,7 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:unified="sap.ui.unified" controllerName="gvtracker.controller.BillDetails" displayBlock="true">
-    <Page id="billDetailsPage" title="Gift Voucher Tracker - Customer Purchase Bill Details - CREATE Screen"> 
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:unified="sap.ui.unified" xmlns:core="sap.ui.core" controllerName="gvtracker.controller.BillDetails">
+    <Page id="billDetailsPage" title="Gift Voucher Tracker - Customer Purchase Bill Details - CREATE Screen">
         <content>
             <VBox width="100%" class="formSpacing5">
-
                 <!-- Customer Mobile and Total Bill Value -->
                 <VBox>
                     <HBox>
@@ -15,93 +14,107 @@
                     </HBox>
                 </VBox>
 
-                <!-- Table for Bill Details -->
-                <Table id="billDetailsTable" width="auto" inset="false" items="{/records}" class="sapUiResponsiveMargin" selectionChange="onRowSelect">
-                    <headerToolbar>
-                        <Toolbar>
-                            <Title text="Customer Purchase Bill Details" />
-                        </Toolbar>
-                    </headerToolbar>
+                <Toolbar>
+                    <Button icon="sap-icon://add" press="onAddRow" />
+                    <Button icon="sap-icon://delete" press="onDeleteRow" />
+                </Toolbar>
 
+                <!-- Table for Bill Details -->
+                <Table id="billDetailsTable" width="auto" inset="false" items="{/records}" class="sapUiResponsiveMargin" mode="MultiSelect" selectionChange="onRowSelect">
                     <columns>
-                        <Column>
-                            <Text text="Sl.No" />
-                        </Column>
-                        <Column>
-                            <Text text="Bill No" />
-                        </Column>
-                        <Column>
-                            <Text text="Bill Value" />
-                        </Column>
-                        <Column>
-                            <Text text="Take Photo" />
-                        </Column>
-                        <Column>
-                            <Text text="Upload Photo" />
-                        </Column>
+                        <Column><Text text="Sl No" /></Column>
+                        <Column><Text text="Bill No" /></Column>
+                        <Column><Text text="Bill Value" /></Column>
+                        <Column><Text text="Take Photo" /></Column>
+                        <Column><Text text="Upload Photo" /></Column>
                     </columns>
 
                     <items>
-                        <!-- First Row -->
-                        <ColumnListItem>
+                        <ColumnListItem press="onItemPress">
                             <cells>
-                                <Text text="1" />
-                                <Text text="1000010101" />
-                                <Text text="500" />
-                                <Button text="Camera" />
-                                <Button text="Browse" />
-                            </cells>
-                        </ColumnListItem>
-
-                        <!-- Second Row -->
-                        <ColumnListItem>
-                            <cells>
-                                <Text text="2" />
-                                <Text text="1000010102" />
-                                <Text text="1000" />
-                                <Button text="Camera" /> 
-                                <Button text="Browse" />
-                            </cells>
-                        </ColumnListItem>
-
-                        <!-- Third Row -->
-                        <ColumnListItem>
-                            <cells>
-                                <Text text="3" />
-                                <Text text="4002222222" />
-                                <Text text="5000" />
-                                <Button text="Camera" /> 
-                                <Button text="Browse"/> 
+                                <Text text="{SlNo}" />
+                                <Input value="{billNo}" editable="true"/>
+                                <Input value="{billValue}" editable="true"/>
+                                <Button text="Camera" press="capturePic">
+                                <customData>
+                                        <core:CustomData key="slNo" value="{SlNo}" />
+                                    </customData>
+                                </Button>
+                                <Button text="Browse" press="onUploadPhoto"/>
                             </cells>
                         </ColumnListItem>
                     </items>
-
-                    <!-- Add/Edit/Delete toolbar for table -->
-                    <infoToolbar>
-                        <Toolbar>
-                            <Button icon="sap-icon://add" text="Add Row" press="onAddRow" /> 
-                            <Button icon="sap-icon://delete" text="Delete" press="onDeleteRow" />
-                        </Toolbar>
-                    </infoToolbar>
                 </Table>
 
-                <!-- Display Pane for Uploaded Images -->
-                <HBox id="idDisplayPane" wrap="Wrap" justifyContent="SpaceBetween">
-                    <items>
-                        <Image src="{/images/0}" width="80px" visible="true" />
-                        <Image src="{/images/1}" width="80px" visible="true" />
-                        <Image src="{/images/2}" width="80px" visible="true" />
-                        <Image src="{/images/3}" width="80px" visible="true" />
-                    </items>
+                 <!-- VBoxes to display the added bill photo -->
+            <VBox width="100%" justifyContent="Center" alignItems="Center">
+                <!-- Row for Image Placeholders -->
+                <HBox justifyContent="SpaceAround" width="100%">
+                    <VBox id="imageVBox1" class="imageBox vboxBorder" alignItems="Center" justifyContent="Center" width="150px" height="170px" visible="false">
+                        <Text id="srNo1" text="1" class="srNoText"/>
+                        <Image src="" width="140px" height="140px" visible="false" press="onImagePress"/>
+                    </VBox>                    
+                    <VBox id="imageVBox2" class="imageBox vboxBorder" alignItems="Center" justifyContent="Center" width="150px" height="170px" visible="false">
+                        <Text id="srNo2" text="2" class="srNoText"/>
+                        <Image src="" width="140px" height="140px" visible="false" press="onImagePress"/>
+                    </VBox>
+                    <VBox id="imageVBox3" class="imageBox vboxBorder" alignItems="Center" justifyContent="Center" width="150px" height="170px" visible="false">
+                        <Text id="srNo3" text="3" class="srNoText"/>
+                        <Image src="" width="140px" height="140px" visible="false" press="onImagePress"/>
+                    </VBox>
+                    <VBox id="imageVBox4" class="imageBox vboxBorder" alignItems="Center" justifyContent="Center" width="150px" height="170px" visible="false">
+                        <Text id="srNo4" text="4" class="srNoText"/>
+                        <Image id="image4" src="" width="140px" height="140px" visible="false" press="onImagePress"/>
+                    </VBox>
                 </HBox>
+
+                <HBox justifyContent="SpaceAround" width="100%">
+                    <VBox id="imageVBox5" class="imageBox vboxBorder" alignItems="Center" justifyContent="Center" width="150px" height="170px" visible="false">
+                        <Text id="srNo5" text="5" class="srNoText"/>
+                        <Image id="image5" src="" width="140px" height="140px" visible="false" press="onImagePress"/>
+                    </VBox>                    
+                    <VBox id="imageVBox6" class="imageBox vboxBorder" alignItems="Center" justifyContent="Center" width="150px" height="170px" visible="false">
+                        <Text id="srNo6" text="6" class="srNoText"/>
+                        <Image id="image6" src="" width="140px" height="140px" visible="false" press="onImagePress"/>
+                    </VBox>
+                    <VBox id="imageVBox7" class="imageBox vboxBorder" alignItems="Center" justifyContent="Center" width="150px" height="170px" visible="false">
+                        <Text id="srNo7" text="7" class="srNoText"/>
+                        <Image id="image7" src="" width="140px" height="140px" visible="false" press="onImagePress"/>
+                    </VBox>
+                    <VBox id="imageVBox8" class="imageBox vboxBorder" alignItems="Center" justifyContent="Center" width="150px" height="170px" visible="false">
+                        <Text id="srNo8" text="8" class="srNoText"/>
+                        <Image id="image8" src="" width="140px" height="140px" visible="false" press="onImagePress"/>
+                    </VBox>
+                </HBox>
+
+             
+            </VBox>
+
+            <!-- Dialog to upload the image -->
+                <Dialog id="uploadDialog" title="Upload Image" stretchOnPhone="true">
+                    <VBox>
+                        <unified:FileUploader
+                            id="dialogFileUploader"
+                            name="myFileUpload"
+                            tooltip="Upload your file"
+                            change="onFileChange"
+                            fileType="jpg,png,jpeg"
+                            placeholder="Choose an image for upload..." />
+                    </VBox>
+                    <endButton>
+                        <Button text="Cancel" press="onDialogClose" />
+                    </endButton>
+                </Dialog>
 
                 <!-- Cancel and Submit buttons -->
                 <HBox justifyContent="Center" width="100%" class="buttonBox">
                     <Button text="CANCEL" type="Reject" press="onCancelCreateBill"/>
                     <Button text="SUBMIT" type="Accept" />
                 </HBox>
-
             </VBox>
+
+
+
         </content>
     </Page>
 </mvc:View>
