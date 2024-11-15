@@ -46,9 +46,9 @@
                     </items>
                 </Table>
 
-                <VBox id="imageContainer">
+                <HBox id="imageContainer" justifyContent="Center" alignItems="Center">
     <!-- Other items or controls can be here -->
-</VBox>
+</HBox>
 
             <!-- <VBox width="100%" justifyContent="Center" alignItems="Center"> 
                 <HBox justifyContent="SpaceAround" width="100%">

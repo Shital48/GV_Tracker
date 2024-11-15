@@ -27,10 +27,13 @@ sap.ui.define([
             // class: "imageBox vboxBorder",
             alignItems: "Center",
             justifyContent: "Center",
-            width: "150px",
-            height: "170px",
+            width: "140px",
+            height: "156.5px",
             visible: true
         });
+        // Add the border CSS class
+        newVBox.addStyleClass("vboxBorder");
+    
     
         var text = new sap.m.Text({
            // id: "srNo" + 1,
@@ -62,9 +65,13 @@ sap.ui.define([
       
 
       onAddRow: function () {
+
+
         var oModel = this.getView().getModel();
         var oData = oModel.getData();
     
+        if(oData.records.length<8)
+        {
         // Calculate next SlNo based on the length of the records array
         var newSlNo = oData.records.length + 1;
     
@@ -85,10 +92,13 @@ sap.ui.define([
             // class: "imageBox vboxBorder",
             alignItems: "Center",
             justifyContent: "Center",
-            width: "150px",
-            height: "170px",
+            width: "140px",
+            height: "156.5px",
             visible: true
         });
+
+        // Add the border CSS class
+        newVBox.addStyleClass("vboxBorder");
     
         var text = new sap.m.Text({
            // id: "srNo" + newSlNo,
@@ -112,6 +122,10 @@ sap.ui.define([
         this.byId("imageContainer").addItem(newVBox);
         console.log("New row added with SlNo:", newSlNo);
        // console.log("texttt:","imageVBox" + newSlNo);
+    }
+    else{
+        sap.m.MessageToast.show("You can not add more Bill Details");
+    }
     },
     
 
@@ -296,8 +310,8 @@ sap.ui.define([
     // Capture image from video and set in VBox
     _captureImageFromVideo: function () {
         var snapShotCanvas = document.createElement('canvas');
-        snapShotCanvas.width = 140;
-        snapShotCanvas.height = 140;
+        snapShotCanvas.width = 300;
+        snapShotCanvas.height = 300;
         var oContext = snapShotCanvas.getContext('2d');
         var player = document.getElementById("player");
 
@@ -349,8 +363,8 @@ sap.ui.define([
         if (!this._oImageDialog) {
             this._oImageDialog = new sap.m.Dialog({
                 title: "Image View",
-                contentWidth: "70%",
-                contentHeight: "70%",
+                contentWidth: "25vw",
+                contentHeight: "25vw",
                 content: [
                     new sap.m.Image({ src: oImageSrc, width: "100%", height: "100%" }),
                 ],

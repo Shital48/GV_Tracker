@@ -117,3 +117,11 @@
 .BillInfoSize{ 
     margin-left: 135px!important;
 }
+.vboxBorder {
+    border: 1px solid #1b1515; /* Light gray border */
+    padding: 5px;           /* Add padding if needed */
+    border-radius: 4px;     /* Optional: rounded corners */
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow */
+    margin: 0.5vw;
+    overflow: hidden;
+}
