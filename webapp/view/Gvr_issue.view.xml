@@ -14,7 +14,7 @@
                 <form:FormContainer id="container10">
                     <form:formElements>
                         <form:FormElement label="Shopping Mall" id="ShoppingMall11">
-                            <Input width="100%" id="ShoppingMall12" editable="false" value="{/shoppingMall}" /> 
+                         
                         </form:FormElement>
 
                         <form:FormElement label="Customer Type" id="CustomerType11">
@@ -172,7 +172,10 @@
 
         <HBox justifyContent="End" alignItems="Center">
             <Button text="CANCEL" class="buttonSpace"/>
-            <Button text="SUBMIT" class="buttonSpace"/> 
+            <Button text="SUBMIT" class="buttonSpace" press="onFetchData" />
+            <List items="{/}">
+                <StandardListItem title="{d/Name}" description="{d/Plant}" />
+            </List>
         </HBox> 
 
     </Page>

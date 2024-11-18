@@ -5,16 +5,27 @@ sap.ui.define([
     "sap/m/StandardListItem",
     "sap/m/List",
     "sap/m/MessageToast",
-    "sap/ui/core/format/DateFormat"
-], function (Controller, ValueHelpDialog, JSONModel, DateFormat, StandardListItem, List, MessageToast) {
+    "sap/ui/core/format/DateFormat",
+    "sap/ui/model/odata/v2/ODataModel" 
+], function (Controller, ValueHelpDialog, JSONModel, DateFormat, StandardListItem, List, MessageToast,ODataModel) {
     "use strict";
 
     return Controller.extend("gvtracker.controller.GvrIssue", {
 
         onInit: function () {
+            
+            // Initialize OData Model
+            var oModelData = new ODataModel("https://vhpgepedci.sap.prestigeconstructions.com:44300/sap/opu/odata/sap/ZMM_GV_PROCESS_SRV/ShoppingMallSet/?sap-client=120&saml2=disabled",                
+                {
+                    user: IBABAP1,
+                    password: Gemini*IB765,
+                    json: true
+                
+                });
 
-           
-
+            // Set the model to the view or core
+            this.getView().setModel(oModelData);
+        
             // Set current date in 'yyyy-MM-dd' format
             const oDate = new Date();
             const sCurrentDate = oDate.toISOString().split("T")[0]; // Format date as 'yyyy-MM-dd'
@@ -86,7 +97,7 @@ sap.ui.define([
 
 
         },
-
+        
         _getPlantCode: function (sysUser, userRole) {
             // Implement your logic to get the plant code
             return new Promise((resolve, reject) => {

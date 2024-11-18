@@ -46,14 +46,22 @@
       "cozy": true
     },
     "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "gvtracker.i18n.i18n"
-        }
-      }
+      "": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+       "settings": {
+                    "serviceUrl": "https://vhpgepedci.sap.prestigeconstructions.com:44300/sap/opu/odata/sap/ZMM_GV_PROCESS_SRV/ShoppingMallSet/",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultHeaders": {
+                        "Authorization": "Basic your-base64-encoded-credentials"
+                    },
+                    "settings": {
+                    "sap-client": "120",
+                    "saml2": "disabled"
+                  }
+                }
+              }
     },
-    "resources": {
+      "resources": {
       "css": [
         {
           "uri": "css/style.css"
