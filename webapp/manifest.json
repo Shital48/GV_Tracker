@@ -1,6 +1,15 @@
 {
   "_version": "1.65.0",
   "sap.app": {
+    "dataSources": {
+      "SampleOData": {
+        "uri": "https://s4hana-sbx.infrabeat.com:8001/sap/opu/odata/sap/Z_SHAMAL1_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    },
     "id": "gvtracker",
     "type": "application",
     "i18n": "i18n/i18n.properties",
@@ -45,22 +54,19 @@
       "compact": true,
       "cozy": true
     },
-    "models": {
+     "models": {
       "": {
+        "dataSource": "SampleOData",
         "type": "sap.ui.model.odata.v2.ODataModel",
-       "settings": {
-                    "serviceUrl": "https://vhpgepedci.sap.prestigeconstructions.com:44300/sap/opu/odata/sap/ZMM_GV_PROCESS_SRV/ShoppingMallSet/",
-                    "defaultBindingMode": "TwoWay",
-                    "defaultHeaders": {
-                        "Authorization": "Basic your-base64-encoded-credentials"
-                    },
-                    "settings": {
-                    "sap-client": "120",
-                    "saml2": "disabled"
-                  }
-                }
-              }
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "useBatch": false
+        }
+      }
     },
+    
+    
       "resources": {
       "css": [
         {

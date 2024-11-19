@@ -26,3 +26,9 @@ server:
       configuration:
         component: gvtracker
         ui5Theme: sap_horizon
+         # Add a proxy for your OData service
+    - name: ui5-middleware-simpleproxy
+      afterMiddleware: fiori-tools-preview
+      configuration:
+        baseUri: "https://s4hana-sbx.infrabeat.com:8001"
+        mountPath: "/sap/opu/odata/sap/Z_SHAMAL1_SRV/"

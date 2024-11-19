@@ -14,17 +14,36 @@ sap.ui.define([
 
         onInit: function () {
             
+            // Define username and password
+            var sUsername = "Shamalp"; // Replace with your username
+            var sPassword = "Shamalp@1234"; // Replace with your password
+
+
             // Initialize OData Model
-            var oModelData = new ODataModel("https://vhpgepedci.sap.prestigeconstructions.com:44300/sap/opu/odata/sap/ZMM_GV_PROCESS_SRV/ShoppingMallSet/?sap-client=120&saml2=disabled",                
+            var oModelData = new ODataModel(                 
                 {
-                    user: IBABAP1,
-                    password: Gemini*IB765,
-                    json: true
+                    serviceUrl: "/sap/opu/odata/sap/Z_SHAMAL1_SRV/",
+                    headers: {
+                      Authorization: "Basic " + btoa(sUsername + ":" + sPassword)
+                    }
                 
                 });
 
             // Set the model to the view or core
             this.getView().setModel(oModelData);
+
+            // Optional: Test if the service loads data successfully
+            oModelData.read("/LFA1Set", {
+                success: function (oData) {
+                console.log("Data loaded successfully:", oData);
+                },
+                error: function (oError) {
+                MessageBox.error("Failed to load data. Please check your credentials.");
+                }
+            });
+
+
+
         
             // Set current date in 'yyyy-MM-dd' format
             const oDate = new Date();
