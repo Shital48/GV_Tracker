@@ -393,6 +393,7 @@ sap.ui.define([
                 var sValue = oEvent.getParameter("value");
                 var oInput = oEvent.getSource();
                 
+                //revert
                 // Check if the value contains any non-numeric characters
                 if (isNaN(sValue)&& sValue !== "") {
                 oInput.setValueState("Error");
