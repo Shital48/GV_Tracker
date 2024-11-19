@@ -5,46 +5,16 @@ sap.ui.define([
     "sap/m/StandardListItem",
     "sap/m/List",
     "sap/m/MessageToast",
-    "sap/ui/core/format/DateFormat",
-    "sap/ui/model/odata/v2/ODataModel" 
-], function (Controller, ValueHelpDialog, JSONModel, DateFormat, StandardListItem, List, MessageToast,ODataModel) {
+    "sap/ui/core/format/DateFormat"
+], function (Controller, ValueHelpDialog, JSONModel, DateFormat, StandardListItem, List, MessageToast) {
     "use strict";
 
     return Controller.extend("gvtracker.controller.GvrIssue", {
 
         onInit: function () {
-            
-            // Define username and password
-            var sUsername = "Shamalp"; // Replace with your username
-            var sPassword = "Shamalp@1234"; // Replace with your password
 
+           
 
-            // Initialize OData Model
-            var oModelData = new ODataModel(                 
-                {
-                    serviceUrl: "/sap/opu/odata/sap/Z_SHAMAL1_SRV/",
-                    headers: {
-                      Authorization: "Basic " + btoa(sUsername + ":" + sPassword)
-                    }
-                
-                });
-
-            // Set the model to the view or core
-            this.getView().setModel(oModelData);
-
-            // Optional: Test if the service loads data successfully
-            oModelData.read("/LFA1Set", {
-                success: function (oData) {
-                console.log("Data loaded successfully:", oData);
-                },
-                error: function (oError) {
-                MessageBox.error("Failed to load data. Please check your credentials.");
-                }
-            });
-
-
-
-        
             // Set current date in 'yyyy-MM-dd' format
             const oDate = new Date();
             const sCurrentDate = oDate.toISOString().split("T")[0]; // Format date as 'yyyy-MM-dd'
@@ -116,7 +86,7 @@ sap.ui.define([
 
 
         },
-        
+
         _getPlantCode: function (sysUser, userRole) {
             // Implement your logic to get the plant code
             return new Promise((resolve, reject) => {
@@ -423,7 +393,6 @@ sap.ui.define([
                 var sValue = oEvent.getParameter("value");
                 var oInput = oEvent.getSource();
                 
-                //revert
                 // Check if the value contains any non-numeric characters
                 if (isNaN(sValue)&& sValue !== "") {
                 oInput.setValueState("Error");

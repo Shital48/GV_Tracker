@@ -1,15 +1,6 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "dataSources": {
-      "SampleOData": {
-        "uri": "https://s4hana-sbx.infrabeat.com:8001/sap/opu/odata/sap/Z_SHAMAL1_SRV/",
-        "type": "OData",
-        "settings": {
-          "odataVersion": "2.0"
-        }
-      }
-    },
     "id": "gvtracker",
     "type": "application",
     "i18n": "i18n/i18n.properties",
@@ -54,20 +45,15 @@
       "compact": true,
       "cozy": true
     },
-     "models": {
-      "": {
-        "dataSource": "SampleOData",
-        "type": "sap.ui.model.odata.v2.ODataModel",
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Inline",
-          "useBatch": false
+          "bundleName": "gvtracker.i18n.i18n"
         }
       }
     },
-    
-    
-      "resources": {
+    "resources": {
       "css": [
         {
           "uri": "css/style.css"
