@@ -169,7 +169,10 @@
                 </ColumnListItem>
             </items>
         </Table>
-
+        <VBox>
+    <Text text="Shopping Mall Name:" />
+    <Input value="{path: '/d/Name', targetType: 'any'}" />
+  </VBox>
         <HBox justifyContent="End" alignItems="Center">
             <Button text="CANCEL" class="buttonSpace"/>
             <Button text="SUBMIT" class="buttonSpace"/> 

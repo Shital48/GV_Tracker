@@ -13,7 +13,18 @@ sap.ui.define([
 
         onInit: function () {
 
-           
+            var oModel = this.getOwnerComponent().getModel(); // Get the default model
+            this.getView().setModel(oModel);
+      
+            // Example: Reading data from an OData service
+            oModel.read("/ShoppingMallSet", {
+              success: function (oData) {
+                console.log("Data fetched successfully:", oData);
+              },
+              error: function (oError) {
+                console.error("Error fetching data:", oError);
+              }
+            });
 
             // Set current date in 'yyyy-MM-dd' format
             const oDate = new Date();
